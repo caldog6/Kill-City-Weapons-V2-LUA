@@ -8,8 +8,8 @@ SWEP.Instructions = "" --Instructions Tooltip
 SWEP.Spawnable = true --Can you, as a normal user, spawn this?
 SWEP.AdminSpawnable = true --Can an adminstrator spawn this?  Does not tie into your admin mod necessarily, unless its coded to allow for GMod's default ranks somewhere in its code.  Evolve and ULX should work, but try to use weapon restriction rather than these.
 SWEP.DrawCrosshair = true -- Draw the crosshair?
-SWEP.DrawCrosshairIS = true --Draw the crosshair in ironsights?
-SWEP.PrintName = "OICW" -- Weapon name (Shown on HUD)
+SWEP.DrawCrosshairIS = false --Draw the crosshair in ironsights?
+SWEP.PrintName = "XM29 O.I.C.W" -- Weapon name (Shown on HUD)
 SWEP.Slot = 2 -- Slot in the weapon selection menu.  Subtract 1, as this starts at 0.
 SWEP.SlotPos = 73 -- Position in the slot
 SWEP.AutoSwitchTo = true -- Auto switch to if we pick it up
@@ -17,7 +17,7 @@ SWEP.AutoSwitchFrom = true -- Auto switch from if you pick up a better weapon
 SWEP.Weight = 30 -- This controls how "good" the weapon is for autopickup.
 --[[WEAPON HANDLING]]
 --
-SWEP.Primary.Sound = Sound("TFA_OICW.1") -- This is the sound of the weapon, when you shoot.
+SWEP.Primary.Sound = Sound("TFA_MISC_OICW.1") -- This is the sound of the weapon, when you shoot.
 SWEP.Primary.SilencedSound = nil -- This is the sound of the weapon, when silenced.
 SWEP.Primary.PenetrationMultiplier = 1 --Change the amount of something this gun can penetrate through
 SWEP.Primary.Damage = 34 -- Damage, in standard damage points.
@@ -28,8 +28,8 @@ SWEP.Primary.Knockback = nil --Autodetected if nil; this is the velocity kickbac
 SWEP.Primary.HullSize = 0 --Big bullets, increase this value.  They increase the hull size of the hitscan bullet.
 SWEP.Primary.NumShots = 1 --The number of shots the weapon fires.  SWEP.Shotgun is NOT required for this to be >1.
 SWEP.Primary.Automatic = true -- Automatic/Semi Auto
-SWEP.Primary.RPM = 60 / 0.1 -- This is in Rounds Per Minute / RPM
-SWEP.Primary.RPM_Scoped = 60 / 0.3 -- This is in Rounds Per Minute / RPM
+SWEP.Primary.RPM = 650 -- This is in Rounds Per Minute / RPM
+SWEP.Primary.RPM_Scoped = nil -- This is in Rounds Per Minute / RPM
 SWEP.Primary.RPM_Semi = nil -- RPM for semi-automatic or burst fire.  This is in Rounds Per Minute / RPM
 SWEP.Primary.RPM_Burst = nil -- RPM for burst fire, overrides semi.  This is in Rounds Per Minute / RPM
 SWEP.Primary.DryFireDelay = nil --How long you have to wait after firing your last shot before a dryfire animation can play.  Leave nil for full empty attack length.  Can also use SWEP.StatusLength[ ACT_VM_BLABLA ]
@@ -43,7 +43,7 @@ SWEP.CanBeSilenced = false --Can we silence?  Requires animations.
 SWEP.Silenced = false --Silenced by default?
 -- Selective Fire Stuff
 SWEP.SelectiveFire = true --Allow selecting your firemode?
-SWEP.DisableBurstFire = false --Only auto/single?
+SWEP.DisableBurstFire = true --Only auto/single?
 SWEP.OnlyBurstFire = false --No auto, only burst/single?
 SWEP.DefaultFireMode = "" --Default to auto or whatev
 SWEP.FireModeName = nil --Change to a text value to override it
@@ -57,22 +57,22 @@ SWEP.DisableChambering = false --Disable round-in-the-chamber
 --Recoil Related
 SWEP.Primary.BaseKick = 0.45 -- This is the maximum upwards recoil (rise)
 SWEP.Primary.MaxKick = 0.35 -- This is the maximum downwards recoil (skeet)
-SWEP.Primary.KickHorizontal			= 0.2	
+SWEP.Primary.KickHorizontal			= 0.3
 SWEP.Primary.StaticRecoilFactor = 0.7 --Amount of recoil to directly apply to EyeAngles.  Enter what fraction or percentage (in decimal form) you want.  This is also affected by a convar that defaults to 0.5.
 --Firing Cone Related
 SWEP.Primary.Spread = .02 --This is hip-fire acuracy.  Less is more (1 is horribly awful, .0001 is close to perfect)
-SWEP.Primary.IronAccuracy = .01 -- Ironsight accuracy, should be the same for shotguns
+SWEP.Primary.IronAccuracy = .005 -- Ironsight accuracy, should be the same for shotguns
 --Unless you can do this manually, autodetect it.  If you decide to manually do these, uncomment this block and remove this line.
-SWEP.Primary.SpreadMultiplierMax = 3.8 --How far the spread can expand when you shoot.
-SWEP.Primary.SpreadIncrement = 0.5 --What percentage of the modifier is added on, per shot.
-SWEP.Primary.SpreadRecovery = 5 --How much the spread recovers, per second.
+SWEP.Primary.SpreadMultiplierMax = 3.2 --How far the spread can expand when you shoot.
+SWEP.Primary.SpreadIncrement = 0.4 --What percentage of the modifier is added on, per shot.
+SWEP.Primary.SpreadRecovery = 7 --How much the spread recovers, per second.
 --Range Related
 SWEP.Primary.Range = -1 -- The distance the bullet can travel in source units.  Set to -1 to autodetect based on damage/rpm.
 SWEP.Primary.RangeFalloff = -1 -- The percentage of the range the bullet damage starts to fall off at.  Set to 0.8, for example, to start falling off after 80% of the range.
 --Penetration Related
 SWEP.MaxPenetrationCounter = 4 --The maximum number of ricochets.  To prevent stack overflows.
 --Misc
-SWEP.IronRecoilMultiplier = 0.7 --Multiply recoil by this factor when we're in ironsights.  This is proportional, not inversely.
+SWEP.IronRecoilMultiplier = 0.6 --Multiply recoil by this factor when we're in ironsights.  This is proportional, not inversely.
 SWEP.CrouchAccuracyMultiplier = 0.6 --Less is more.  Accuracy * 0.5 = Twice as accurate, Accuracy * 0.1 = Ten times as accurate
 --Movespeed
 SWEP.MoveSpeed = 1 --Multiply the player's movespeed by this.
@@ -84,15 +84,15 @@ SWEP.ProjectileVelocity = 0 --Entity to shoot's velocity
 SWEP.ProjectileModel = nil --Entity to shoot's model
 --[[VIEWMODEL]]
 --
-SWEP.ViewModel = "models/weapons/c_oicw_nope.mdl" --Viewmodel path
-SWEP.ViewModelFOV = 50 -- This controls how big the viewmodel looks.  Less is more.
+SWEP.ViewModel = "models/weapons/tfa_misc/c_oicw.mdl" --Viewmodel path
+SWEP.ViewModelFOV = 54 -- This controls how big the viewmodel looks.  Less is more.
 SWEP.ViewModelFlip = false -- Set this to true for CSS models, or false for everything else (with a righthanded viewmodel.)
 SWEP.UseHands = true --Use gmod c_arms system.
-SWEP.VMPos = Vector(-2.5,-5.36,1) --Vector(0.300,-7.02,0.603) --The viewmodel positional offset, constantly.  Subtract this from any other modifications to viewmodel position.
-SWEP.VMAng = Vector(0,0.2,-0.620) --The viewmodel angular offset, constantly.   Subtract this from any other modifications to viewmodel angle.
+--SWEP.VMPos = Vector(0.300,-5.36,0.603) --Vector(0.300,-7.02,0.603) --The viewmodel positional offset, constantly.  Subtract this from any other modifications to viewmodel position.
+--SWEP.VMAng = Vector(0,0.2,-0.620) --The viewmodel angular offset, constantly.   Subtract this from any other modifications to viewmodel angle.
 SWEP.VMPos_Additive = true --Set to false for an easier time using VMPos. If true, VMPos will act as a constant delta ON TOP OF ironsights, run, whateverelse
-SWEP.CenteredPos = Vector(-5.881, -7.252, -2.01) --The viewmodel positional offset, used for centering.  Leave nil to autodetect using ironsights.
-SWEP.CenteredAng = Vector(4.925, -2.112, 2.111) --The viewmodel angular offset, used for centering.  Leave nil to autodetect using ironsights.
+SWEP.CenteredPos = Vector(-2.76, 0, -5.04) --The viewmodel positional offset, used for centering.  Leave nil to autodetect using ironsights.
+SWEP.CenteredAng = Vector(3.517, 0, 0) --The viewmodel angular offset, used for centering.  Leave nil to autodetect using ironsights.
 SWEP.Bodygroups_V = nil --{
 --[0] = 1,
 --[1] = 4,
@@ -100,7 +100,7 @@ SWEP.Bodygroups_V = nil --{
 --}
 --[[WORLDMODEL]]
 --
-SWEP.WorldModel = "models/weapons/w_tfa_oicw.mdl" -- Weapon world model path
+SWEP.WorldModel = "models/weapons/tfa_misc/w_oicw.mdl" -- Weapon world model path
 SWEP.Bodygroups_W = nil --{
 --[0] = 1,
 --[1] = 4,
@@ -143,9 +143,11 @@ SWEP.Secondary.UseParabolic = false --Overlay option
 SWEP.Secondary.UseElcan = false --Overlay option
 SWEP.Secondary.UseGreenDuplex = false --Overlay option
 
-if surface then
-	SWEP.Secondary.ScopeTable = {}
-end
+SWEP.Secondary.ScopeTable = {	
+	["ScopeMaterial"] =  Material("oicw/scope_lens.png", "smooth"),
+	["ScopeBorder"] = color_black,
+	["ScopeCrosshair"] = { ["r"] = 0, ["g"]  = 0, ["b"] = 0, ["a"] = 0, ["s"] = 1 }
+}
 
 --[[SHOTGUN CODE]]
 --
@@ -160,9 +162,10 @@ SWEP.RunSightsAng = Vector(-6.332, 33.769, 0) --Change this, using SWEP Creation
 --
 SWEP.data = {}
 SWEP.data.ironsights = 1 --Enable Ironsights
-SWEP.Secondary.IronFOV = 35 -- How much you 'zoom' in. Less is more!  Don't have this be <= 0.  A good value for ironsights is like 70.
-SWEP.IronSightsPos = Vector(-7.16, -13.684, 3.7) --Change this, using SWEP Creation Kit preferably
-SWEP.IronSightsAng = Vector(0, 0, 1.406) --Change this, using SWEP Creation Kit preferably
+SWEP.Secondary.IronFOV = 25 -- How much you 'zoom' in. Less is more!  Don't have this be <= 0.  A good value for ironsights is like 70.
+SWEP.IronSightsPos = Vector(-5.801, -10.252, 1.519)
+SWEP.IronSightsAng = Vector(0, 0, 0)
+
 --[[INSPECTION]]
 --
 SWEP.InspectPos = nil --Vector(0,0,0) --Replace with a vector, in style of ironsights position, to be used for inspection
@@ -212,6 +215,7 @@ SWEP.SprintAnimation = {}
 --SWEP.Secondarys
 SWEP.MuzzleAttachment = "muzzle" -- Should be "1" for CSS models or "muzzle" for hl2 models
 SWEP.ShellAttachment = "1" -- Should be "2" for CSS models or "shell" for hl2 models
+SWEP.ShellAttachmentSecondary = "2" -- Should be "2" for CSS models or "shell" for hl2 models
 SWEP.MuzzleFlashEnabled = true --Enable muzzle flash
 SWEP.MuzzleAttachmentRaw = 1 --This will override whatever string you gave.  This is the raw SWEP.Secondary number.  This is overridden or created when a gun makes a muzzle event.
 SWEP.AutoDetectMuzzleAttachment = false --For multi-barrel weapons, detect the proper SWEP.Secondary?
@@ -219,7 +223,7 @@ SWEP.MuzzleFlashEffect = nil --Change to a string of your muzzle flash effect.  
 SWEP.SmokeParticle = nil --Smoke particle (ID within the PCF), defaults to something else based on holdtype; "" to disable
 SWEP.EjectionSmokeEnabled = false --Disable automatic ejection smoke
 --Shell eject override
-SWEP.LuaShellEject = false --Enable shell ejection through lua?
+SWEP.LuaShellEject = true --Enable shell ejection through lua?
 SWEP.LuaShellEjectDelay = 0 --The delay to actually eject things
 SWEP.LuaShellEffect = "RifleShellEject" --The effect used for shell ejection; Defaults to that used for blowback
 --Tracer Stuff
@@ -230,7 +234,11 @@ SWEP.ImpactEffect = nil --Impact Effect
 SWEP.ImpactDecal = nil --Impact Decal
 --[[EVENT TABLE]]
 --
-SWEP.EventTable = {} --Event Table, used for custom events when an action is played.  This can even do stuff like playing a pump animation after shooting.
+SWEP.EventTable = {
+	[ACT_VM_SECONDARYATTACK] = {
+		{ ["time"] = 0, ["type"] = "lua", ["value"] = function( wep, viewmodel ) wep:MakeShellSecondary() end, ["client"] = false, ["server"] = true},
+	}
+} --Event Table, used for custom events when an action is played.  This can even do stuff like playing a pump animation after shooting.
 --example:
 --SWEP.EventTable = {
 --	[ACT_VM_RELOAD] = {
@@ -251,7 +259,13 @@ SWEP.AnimCycle = 0 -- Start on the right
 --
 SWEP.VElements = nil --Export from SWEP Creation Kit.  For each item that can/will be toggled, set active=false in its individual table
 SWEP.WElements = nil --Export from SWEP Creation Kit.  For each item that can/will be toggled, set active=false in its individual table
-SWEP.Attachments = {}
+
+SWEP.Attachments = {
+}
+
+SWEP.ViewModelBoneMods = {
+}
+
 --[MDL_SWEP.Secondary] = = { offset = { 0, 0 }, atts = { "si_eotech" }, sel = 0 }
 --Sorry for kind-of copying your syntax, Spy, but it makes it easier on the users and you did an excellent job.  The internal code's all mine anyways.
 --sel allows you to have an SWEP.Secondary pre-selected, and is used internally by the base to show which SWEP.Secondary is selected in each category.
@@ -314,36 +328,6 @@ function SWEP:Deploy(...)
 end
 
 function SWEP:Think2(...)
-	if not self.Primary.RPM_Default then
-		self.Primary.RPM_Default = self.Primary.RPM
-	end
-
-	if self:GetNW2Bool("AltGL") then
-		if self.data.ironsights == 1 then
-			self.Primary.RPM = self.Primary.RPM_Default
-			self:ClearStatCache()
-		end
-
-		self.data.ironsights = 0
-		self.data.ironsights_default = 0
-		self.data.gl = 1
-	else
-		if self.data.ironsights == 0 then
-			self.Primary.RPM = self.Primary.RPM_Default
-			self:ClearStatCache()
-		end
-
-		self.data.ironsights = 1
-		self.data.ironsights_default = 1
-		self.data.gl = 0
-
-		if self:IsCurrentlyScoped() then
-			self.Primary.RPM = self.Primary.RPM_Scoped
-		else
-			self.Primary.RPM = self.Primary.RPM_Default
-		end
-	end
-
 	local nsfac = self:GetNW2Int("FireCount") + 1
 	self.Primary.Recoil = 1
 	self.Primary.KickUp = math.min(self.Primary.BaseKick * nsfac, self.Primary.MaxKick)
@@ -367,112 +351,110 @@ function SWEP:ChooseShootAnim()
 	local cnt = self:GetNW2Int("FireCount")
 	local ind = self.FireAnims[cnt] or self.FireAnims[3]
 	self:SendViewModelAnim(ind)
+	self:EventShell()
 	self:SetNW2Int("FireCount", cnt + 1)
 
 	return true, ACT_VM_PRIMARYATTACK
 end
 
+function SWEP:CanSecondaryAttack()
+	
+	if self:Ammo2() < 1 then
+		if not self.HasPlayedEmptyClick then
+			self:EmitSound("Weapon_SMG1.Empty")
+
+			self.HasPlayedEmptyClick = true
+		end
+		return false
+	end
+	
+	if self.FiresUnderwater == false and self:GetOwner():WaterLevel() >= 3 then
+		self:SetNextSecondaryFire(CurTime() + 0.5)
+		self:EmitSound("Weapon_SMG1.Empty")
+		return false
+	else
+		return true
+	end
+end
+
 function SWEP:AltAttack()
-	if self.Owner:KeyPressed(IN_ZOOM) then
-		self:SetNW2Bool("AltGL", not self:GetNW2Bool("AltGL"))
+	local vecSrc = self.Owner:GetShootPos();
+	local Forward = self.Owner:EyeAngles():Forward()
+	local Right = self.Owner:EyeAngles():Right()
+	local Up = self.Owner:EyeAngles():Up()
 
-		if IsFirstTimePredicted() or SERVER then
-			self:EmitSound("Weapon_AR2.Empty")
-		end
-
-		if CLIENT and IsFirstTimePredicted() then
-			if self:GetNW2Bool("AltGL") then
-				self.Owner:ChatPrint("GL Mode Selected")
-			else
-				self.Owner:ChatPrint("Scope Mode Selected")
-			end
-		end
-	end
-
-	return true
-end
-
-local scrcol = Color(128, 255, 178)
-local a = 8
-
-function SWEP:DrawHUD(...)
-	--draw.RoundedBox(0,0,0,ScrW(),ScrH(),ColorAlpha(scrcol, ( self.IronSightsProgress or 0 ) * a ) )
-	return BaseClass.DrawHUD(self, ...)
-end
-
---code_gs
-SWEP.Zoom = {
-	Cooldown = 0,
-	FOV = {35},
-	Times = {
-		Reload = 0.1,
-		Holster = 0.1,
-		[0] = 0.1,
-		0.1
-	},
-	FadeColor = Color(50, 255, 170, 32),
-	FadeTime = 0.2
-}
-
-
-local is,ply,tZoom,nZoomIn,nZoomOut
-
-SWEP.is_sndcache_old = false
-
-function SWEP:IronSightSounds()
-	tZoom = self.Zoom
-	ply = self:GetOwner()
-	is = self:GetIronSights()
-	nZoomIn = bit.bor(SCREENFADE.OUT, SCREENFADE.PURGE, SCREENFADE.STAYOUT)
-	nZoomOut = bit.bor(SCREENFADE.IN, SCREENFADE.PURGE)
-	if SERVER or ( CLIENT and IsFirstTimePredicted() ) then
-		if is ~= self.is_sndcache_old then
-			if is then
-				self:EmitSound(self.IronInSound or "TFA.IronIn")
-				ply:ScreenFade(nZoomIn, tZoom.FadeColor, tZoom.FadeTime, 0)
-			else
-				self:EmitSound(self.IronOutSound or "TFA.IronOut")
-				ply:ScreenFade(nZoomOut, tZoom.FadeColor, tZoom.FadeTime, 0)
-			end
-		end
-		self.is_sndcache_old = is
-	end
-end
-
-
-
-
-
-
---endof code_gs
-SWEP.Secondary.Act = ACT_VM_SECONDARYATTACK
-SWEP.Secondary.Delay = 1
-SWEP.Secondary.Ent = "grenade_ar2"
-SWEP.Secondary.Velocity = 1500
-SWEP.Secondary.Ammo = "smg1_grenade"
-SWEP.Secondary.Automatic = false
-SWEP.Secondary.ClipSize = -1
-SWEP.Secondary.DefaultClip = 3
-SWEP.Secondary.Delay = 1
-SWEP.Secondary.Sound = Sound("weapons/tfa_oicw/ar2_altfire.wav")
-
-function SWEP:SecondaryAttack()
-	if self.data.gl ~= 1 then return end
-
-	if CurTime() > self:GetNextSecondaryFire() and self:Ammo2() > 0 and TFA.Enum.ReadyStatus[self:GetStatus()] and not self:GetSprinting() then
+	if CurTime() > self:GetNextSecondaryFire() and self:Ammo2() > 0 and TFA.Enum.ReadyStatus[self:GetStatus()] and not self:GetSprinting() and self:CanSecondaryAttack() then
 		if SERVER then
 			local ent = ents.Create(self.Secondary.Ent)
-			ent:SetOwner(self.Owner)
-			ent:SetPos(self.Owner:GetShootPos())
-			ent:SetAngles(self.Owner:EyeAngles())
-			ent:SetVelocity(self.Owner:GetAimVector() * self.Secondary.Velocity)
+			if (self:GetIronSights())then
+				ent:SetPos(self.Owner:EyePos() + ( self.Owner:GetAimVector() * 16 ))
+			else
+				ent:SetPos( self.Owner:GetShootPos() + Forward * 7 + Right * 6 + Up * -12 );
+			end
+			ent:SetAngles( self.Owner:EyeAngles() )
 			ent:Spawn()
 			ent:Activate()
+			if (self:GetIronSights()) then
+				ent:GetPhysicsObject():SetVelocity( Forward*1200.0 );
+				ent:GetPhysicsObject():AddAngleVelocity( Vector( -400, 400, 0 ) );
+			else
+				ent:GetPhysicsObject():SetVelocity(self.Owner:GetAimVector()*1000)
+				ent:GetPhysicsObject():AddAngleVelocity( Vector( -400, 400, 0 ) );
+			end
+			ent:SetOwner(self.Owner)
 		end
 
 		self:SendViewModelAnim(self.Secondary.Act)
 		self:SetNextSecondaryFire(CurTime() + self.Secondary.Delay)
 		self.Owner:SetAmmo(self.Owner:GetAmmoCount(self.Secondary.Ammo) - 1, self.Secondary.Ammo)
-		self:EmitSound(self.Secondary.Sound)
+		if (not sp) then
+			self:EmitSoundSafe(self.Secondary.Sound)
+		else
+			self:EmitSound(self.Secondary.Sound)
+		end
 	end
 end
+
+function SWEP:MakeShellSecondary()
+	local retVal = hook.Run("TFA_MakeShell",self)
+	if retVal ~= nil then
+		return retVal
+	end
+	
+	shelltype = "tfa_shell_secondary"
+
+	if IsValid(self) then
+		self:EjectionSmoke(true)
+		local vm = (self:IsFirstPerson()) and self.OwnerViewModel or self
+		if type(shelltype) ~= "string" or shelltype == "" then return end -- allows to disable shells by setting override to "" - will shut up all rp fags
+
+		if IsValid(vm) then
+			fx = EffectData()
+			local attid = vm:LookupAttachment("2")
+
+			attid = math.Clamp(attid and attid or 2, 1, 127)
+			local angpos = vm:GetAttachment(attid)
+
+			if angpos then
+				fx:SetEntity(self)
+				fx:SetAttachment(attid)
+				fx:SetMagnitude(1)
+				fx:SetScale(1)
+				fx:SetOrigin(angpos.Pos)
+				fx:SetNormal(angpos.Ang:Forward())
+				TFA.Effects.Create(shelltype, fx)
+			end
+		end
+	end
+end
+
+SWEP.Secondary.Act = ACT_VM_SECONDARYATTACK
+SWEP.Secondary.Delay = 1
+SWEP.Secondary.Ent = "sent_oicw_grenade"
+SWEP.Secondary.Velocity = 1500
+SWEP.Secondary.Ammo = "smg1_grenade"
+SWEP.Secondary.Automatic = false
+SWEP.Secondary.ClipSize = -1
+SWEP.Secondary.DefaultClip = 1
+SWEP.Secondary.Delay = 1
+SWEP.Secondary.Sound = Sound("weapons/tfa_misc/oicw/oicw_altfire.wav")
